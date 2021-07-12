@@ -42,16 +42,18 @@ public class JavaEightStreamsDemo {
         System.out.println("Before Java 8 : " + results);
 
         //Map -> Stream -> Filters -> String
-        results = HOSTING.entrySet().stream()
+        results = HOSTING.entrySet()
+                .stream()
                 .filter(map -> "aws.amazon.com".equals(map.getValue()))
-                .map(map -> map.getValue())
+                //.map(map -> map.getValue())
+                .map(Map.Entry::getValue)
                 .collect(Collectors.joining());
 
-        System.out.println("Before Java 8 : " + results);
+        System.out.println("After Java 8 : " + results);
 
         // filter more values
 
-        results = HOSTING.entrySet().stream()
+        /*results = HOSTING.entrySet().stream()
                 .filter(x -> {
                     if (!x.getValue().contains("amazon") && !x.getValue().contains("digital")) {
                         return true;
@@ -59,7 +61,13 @@ public class JavaEightStreamsDemo {
                     return false;
                 })
                 .map(map -> map.getValue())
-                .collect(Collectors.joining(","));
+                .collect(Collectors.joining(","));*/
+        results = HOSTING.entrySet()
+                    .stream()
+                    .filter(x -> !x.getValue().contains("amazon"))
+                    .filter(x -> !x.getValue().contains("digital"))
+                    .map(Map.Entry::getValue)
+                    .collect(Collectors.joining(","));
 
         System.out.println("With Java 8 : " + results);
 
