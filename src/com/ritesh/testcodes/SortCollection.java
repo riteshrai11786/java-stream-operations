@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class SortCollection {
+public class SortCollection<resArr, myArr, largest> {
 
 
     public static void main(String[] argv) throws Exception {
@@ -26,9 +26,9 @@ public class SortCollection {
                 .boxed()
                 .collect(Collectors.toList());
 
-        System.out.println("Before sorting " +java8IntList);
+        System.out.println("Before sorting " + java8IntList);
         java8IntList.sort(Comparator.naturalOrder());
-        System.out.println("After sorting " +java8IntList);
+        System.out.println("After sorting " + java8IntList);
 
         //  Another way of sorting it by stream and Lambdas
         IntStream.of(unsortedIntArray)
@@ -36,6 +36,7 @@ public class SortCollection {
                 .collect(Collectors.toList())
                 .forEach(x -> System.out.print(x + ","));
     }
+
 
 
 }

@@ -1,5 +1,8 @@
 package com.ritesh.testcodes;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 public class JavaCodeWithoutPredefinedMethods {
 
     public static void main(String [] args) {
@@ -17,5 +20,11 @@ public class JavaCodeWithoutPredefinedMethods {
         }
 
         System.out.println("Array is sorted : "+ isSorted);
+
+        // Now Java 8 way :)
+
+        isSorted = false;
+
+        //isSorted = IntStream.of(arr).forEach();
     }
 }
